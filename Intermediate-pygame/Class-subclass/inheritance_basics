@@ -1,0 +1,64 @@
+class Dog():
+    """A class to represend a genral dog"""
+    def __init__(self, my_name, my_gender, my_age) -> None:
+        self.name = my_name
+        self.gender = my_gender
+        self.age = my_age
+    
+    def eat(self):
+        """Feed the dog"""
+        if self.gender == "male":
+            print("Here " + self.name + "! good boy")
+        else:
+            print("Here " + self.name + "! good girl")
+
+    def bark(self, is_loud):
+        """Get the dog to speak"""
+        if is_loud:
+            print("WOOF WOOF WOOF WOOF WOOF")
+        else:
+            print("woof")
+
+    def compute_age(self):
+        """compute age in dog years"""
+        dog_years = self.age*7
+        print(self.name + " is " + str(dog_years) + " years old in dog years")
+
+
+class Beagle(Dog):
+    """reprent a specific type of dog"""
+
+    def __init__(self, my_name, my_gender, my_age, is_gun_shy) -> None:
+        #call initializtion of super (parent)
+        super().__init__(my_name, my_gender, my_age)
+        self.is_gun_shy = is_gun_shy
+
+    def hunt(self):
+        """if the dog is not gun shy take them hunting"""
+        if not self.is_gun_shy:
+            self.bark(True)
+            print(self.name + " just brought back a duck")
+        else:
+            print(self.name + " brings you a toy to play")
+
+
+    def bark(self, is_loud):
+        if is_loud:
+            print("HOWL HOOOWWWWLLLLLLLL")
+        else:
+            print("how...")
+
+
+beagle = Beagle("Cami", "female", 10, False)
+beagle_m = Beagle("Nux", "male", 20, True)
+
+beagle.eat()
+beagle_m.bark(False)
+beagle.compute_age()
+print()
+beagle.hunt()
+beagle_m.hunt()
+
+dog = Dog("spot", "male", 3)
+dog.bark(True)
+
